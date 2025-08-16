@@ -4,11 +4,13 @@ USE ProjectDB
 --1. DDL — Data Definition Language
 
 	--1.CREATE
-CREATE TABLE DEMO(
-id		INT,
-name	VARCHAR(100),
-qty		TINYINT,
-price	NUMERIC(18, 2)
+CREATE TABLE DEMO (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    qty INT,
+    price DECIMAL(10,2),
+    category VARCHAR(50),
+    added_date DATE
 )
 
 
@@ -46,18 +48,24 @@ TRUNCATE TABLE DEMO_TABLE
 
 	--1.INSERT
 		--Insert a single row 
-INSERT INTO DEMO (id, name, qty, price)
-VALUES (1, 'Pen', 50, 5.25)
+INSERT INTO DEMO (id, name, qty, price, category, added_date)
+VALUES (1, 'Pen', 50, 5.25, 'Stationery', '2023-01-10')
 
 		-- Insert multiple rows in one statement
-INSERT INTO DEMO (id, name, qty, price)
+INSERT INTO DEMO (id, name, qty, price, category, added_date)
 VALUES 
-(2, 'Pencil', 100, 2.50),
-(3, 'Notebook', 30, 45.00)
+(2, 'Pencil', 100, 2.50, 'Stationery', '2023-02-15'),
+(3, 'Notebook', 30, 45.00, 'Stationery', '2023-03-01'),
+(4, 'Eraser', NULL, NULL, 'Stationery', '2023-01-20'),
+(5, 'Marker', 60, 15.00, 'Office', '2023-04-10'),
+(6, 'Chalk', 200, 1.25, 'School', '2023-01-05'),
+(7, 'Ruler', 75, NULL, 'Stationery', '2023-02-28'),
+(8, 'Stapler', 25, 120.00, 'Office', '2023-05-01'),
+(9, 'Tape', NULL, 25.00, 'Office', '2023-03-15')
 
 		-- Insert using only specific columns (others will be NULL)
-INSERT INTO DEMO (id, name)
-VALUES (4, 'Eraser')
+INSERT INTO DEMO (id, name, category, added_date)
+VALUES (10, 'Glue', 'Office', '2023-02-25')
 
 		-- Insert from another table (or query)
 INSERT INTO DEMO(id, name, qty, price)
@@ -120,6 +128,9 @@ SELECT TOP 2 * FROM DEMO
 
 		-- First 50% of rows
 SELECT TOP 50 PERCENT * FROM DEMO
+
+		--Copy from one table to another
+SELECT * INTO new_table FROM DEMO
 
 ==========================================================================
 --4. TCL (Transaction Control Language)
