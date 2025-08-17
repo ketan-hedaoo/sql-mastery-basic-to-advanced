@@ -5,7 +5,7 @@ USE ProjectDB
 
 	--1.CREATE
 CREATE TABLE DEMO (
-    id INT PRIMARY KEY,
+    id INT,
     name VARCHAR(50),
     qty INT,
     price DECIMAL(10,2),
@@ -61,11 +61,16 @@ VALUES
 (6, 'Chalk', 200, 1.25, 'School', '2023-01-05'),
 (7, 'Ruler', 75, NULL, 'Stationery', '2023-02-28'),
 (8, 'Stapler', 25, 120.00, 'Office', '2023-05-01'),
-(9, 'Tape', NULL, 25.00, 'Office', '2023-03-15')
+(9, 'Tape', NULL, 25.00, 'Office', '2023-03-15'),
+(10, 'Notes', 25, 2.5, 'Office', '2023-05-01'),
+(11, 'Stand', 25, 45.00, 'Office', '2023-05-01'),
+(12, 'Sharpner', 25, 15.00, 'Stationery', '2023-05-01'),
+(13, 'Holder', 25, 25.00, 'Office', '2023-05-01'),
+(14, 'Pin', 25, 1.25, 'Office', '2023-05-01')
 
 		-- Insert using only specific columns (others will be NULL)
 INSERT INTO DEMO (id, name, category, added_date)
-VALUES (10, 'Glue', 'Office', '2023-02-25')
+VALUES (15, 'Glue', 'Office', '2023-02-25')
 
 		-- Insert from another table (or query)
 INSERT INTO DEMO(id, name, qty, price)
